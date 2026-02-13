@@ -1,0 +1,27 @@
+<mat-form-field appearance="outline">
+  <mat-label>Rango de Fechas</mat-label>
+
+  <mat-date-range-input 
+    [rangePicker]="picker"
+    [comparisonStart]="controlStartDate.value"
+    [comparisonEnd]="controlEndDate.value"
+  >
+    <input
+      matStartDate
+      [formControl]="controlStartDate"
+      placeholder="Fecha Inicial"
+    />
+    <input
+      matEndDate
+      [formControl]="controlEndDate"
+      placeholder="Fecha Final"
+    />
+  </mat-date-range-input>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+  @if (controlStartDate.hasError('matStartDateInvalid')) {
+  <mat-error>Invalid start date</mat-error>
+  } @if (controlEndDate.hasError('matEndDateInvalid')) {
+  <mat-error>Invalid end date</mat-error>
+  }
+</mat-form-field>

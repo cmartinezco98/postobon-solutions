@@ -1,0 +1,47 @@
+@use '@angular/material' as mat;
+
+// Overrides específicos para sidenav
+:host {
+  @include mat.sidenav-overrides(
+    (
+      // container-background-color: #189ad6,
+      container-background-color: var(--mat-sys-primary),
+      container-width: 300px,
+      container-shape: 0px
+    )
+  );
+
+  @include mat.list-overrides(
+    (
+      active-indicator-shape: 0px,
+      list-item-label-text-color: #fff,
+      list-item-hover-label-text-color: #fff,
+    )
+  );
+
+  @include mat.expansion-overrides(
+    (
+      // container-background-color: #189ad6,
+      container-background-color: var(--mat-sys-primary),
+      container-shape: 0px,
+      header-text-color: #fff
+    )
+  );
+}
+
+mat-toolbar {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.sidenav-container {
+  height: 100vh;
+}
+
+.content {
+  padding: 20px;
+}
+
+// .active {
+//   font-weight: bold;
+//   color: #1976d2;
+// }

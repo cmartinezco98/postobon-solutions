@@ -1,0 +1,30 @@
+<mat-nav-list class="nav-list">
+  @for (section of navSections; track $index) {
+
+  <mat-expansion-panel
+    [expanded]="panel() === section.sectionTitle"
+    (opened)="setPanel(section.sectionTitle)"
+    hideToggle
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="nav-icon">
+          <mat-icon>{{section.iconSection}}</mat-icon>
+          {{section.sectionTitle}}
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    @for (item of section.navItems; track $index) {
+    <mat-list-item
+      (click)="navigate.emit(`/${section.baseRoute}/${item.route}`)"
+    >
+      <div class="nav-icon">
+        <mat-icon>{{item.icon}}</mat-icon>
+        {{item.title}}
+      </div>
+    </mat-list-item>
+    }
+  </mat-expansion-panel>
+  }
+</mat-nav-list>

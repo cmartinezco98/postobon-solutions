@@ -1,0 +1,30 @@
+<div class="header-pre-authorized-form">
+
+  <form [formGroup]="formInit" (ngSubmit)="submit()">
+    <lib-date-picker
+      [controlStartDate]="getControl('startDate')"
+      [controlEndDate]="getControl('endDate')"
+    />
+
+    <lib-select
+      [label]="'Ruta'"
+      [control]="getControl('route')"
+      [options]="routeOptions"
+    />
+
+    <lib-select
+      [label]="'Recibe'"
+      [control]="getControl('receptor')"
+      [options]="receptorOptions"
+    />
+  </form>
+
+  <lib-button
+    [label]="'Actualizar lista'"
+    [type]="'submit'"
+    [color]="'primary'"
+    icon="upload_file"
+  />
+</div>
+
+<lib-table-check />
