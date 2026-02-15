@@ -43,5 +43,5 @@ Thumbs.db
 
 .angular
 
-*.env.prod
-*.env.dev
+.env.production
+.env.development
