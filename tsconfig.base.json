@@ -18,7 +18,8 @@
       "@web-solutions/*": ["apps/web-solutions/src/app/*"],
       "@postobon-solutions/ui": ["libs/shared/ui/src/index.ts"],
       "@postobon-solutions/models": ["libs/shared/models/src/index.ts"],
-      "@postobon-solutions/client": ["libs/shared/client/src/index.ts"]
+      "@postobon-solutions/client": ["libs/shared/client/src/index.ts"],
+      "@postobon-solutions/server": ["libs/shared/server/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
