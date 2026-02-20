@@ -1,5 +1,5 @@
 export interface GetPreAuthorizedsByDate {
-  start_date: Date;
-  end_date: Date;
+  start_date: string;
+  end_date: string;
   route?: string;
 }
