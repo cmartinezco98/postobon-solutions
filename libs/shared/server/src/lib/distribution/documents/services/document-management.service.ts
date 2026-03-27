@@ -1,27 +1,37 @@
 import { Injectable } from '@nestjs/common';
-import { CreateDocumentManagementDto } from './dto/create-document-management.dto';
-import { UpdateDocumentManagementDto } from './dto/update-document-management.dto';
-import { GetPreAuthorizedsByDateDto } from './dto/get-preauthorizeds-by-date.dto';
+import { CreateDocumentManagementDto } from '../dto/create-document-management.dto';
+import { UpdateDocumentManagementDto } from '../dto/update-document-management.dto';
+import { GetPreAuthorizedsByDateDto } from '../dto/get-preauthorizeds-by-date.dto';
+import { ORMPreauthorizedRepository } from '../repositories/preauthorizeds/preauthorized.orm.repository';
 
 @Injectable()
 export class DocumentManagementService {
+
+  constructor(
+    private readonly ORMPreauthorizedRepo: ORMPreauthorizedRepository,
+  ) { }
+
   create(createDocumentManagementDto: CreateDocumentManagementDto) {
     return 'This action adds a new documentManagement';
   }
 
 
-    /**
+  /**
    * Busca un usuario por su ID único en la base de datos.
    * @param dto DTO con los parámetros de búsqueda.
    * @returns La lista de objetos encontrados o null.
+   *
    */
 
   async getPreAuthorizedsByDate(dto: GetPreAuthorizedsByDateDto) {
-    const {end_date, start_date,  route} = dto;
+    const { end_date, start_date, route } = dto;
     const startDate = new Date(start_date);
     const endDate = new Date(end_date);
-    
-    return `This action returns pre-authorized documents from ${startDate} to ${endDate} from route ${route}` ;
+    // Agrega una día más a la fecha final para que sea mas intuitivo para el usuario
+    endDate.setDate(endDate.getDate() + 1);
+
+    const preAuthorizeds = await this.ORMPreauthorizedRepo.findByDateRange(startDate, endDate, route);
+    return preAuthorizeds;
   }
 
   findAll() {
